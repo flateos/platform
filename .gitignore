@@ -1,0 +1,4 @@
+build*
+efiboot.img
+x86_64
+iso
