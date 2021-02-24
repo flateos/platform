@@ -1,7 +1,8 @@
 #!make
 WORKDIR=/tmp/archiso-tmp
 SRC=/arch
-OUT=/arch/out
+OUT=$(SRC)/out
+VERSION=$(LOGPATH)$(shell date +%Y.%m.%d)
 
 
 .PHONY: install
@@ -12,7 +13,7 @@ install:
 .PHONY: build
 
 build:
-	docker exec -it arch mkarchiso -v -w $(WORKDIR) $(SRC)
+	docker exec -it arch mkarchiso -v -w $(WORKDIR) -o $(OUT) $(SRC)
 
 .PHONY: clean
 
@@ -22,4 +23,4 @@ clean:
 .PHONY: run
 
 run:
-	docker exec -it arch run_archiso -i ${OUT}/archlinux-$(date +%Y.%m.%d)-x86_64.iso
+	docker exec -it arch run_archiso -i $(OUT)/archlinux-$(VERSION)-x86_64.iso
