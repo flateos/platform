@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  arch:
+    image: "archlinux:latest"
+    container_name: "arch"
+    privileged: true
+    tty: true
+    volumes:
+      - .:/arch

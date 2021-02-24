@@ -1,21 +1,25 @@
 #!make
+WORKDIR=/tmp/archiso-tmp
+SRC=/arch
+OUT=/arch/out
+
 
 .PHONY: install
 
 install:
-	sudo pacman -Syu --noconfirm && sudo pacman -S archiso --noconfirm
+	docker exec -it arch pacman -Syyu --noconfirm && pacman -S archiso --noconfirm
 
 .PHONY: build
 
 build:
-	sudo mkarchiso -v -w /tmp/archiso-tmp $(PWD)
+	docker exec -it arch mkarchiso -v -w $(WORKDIR) $(SRC)
 
 .PHONY: clean
 
 clean:
-	sudo rm -rf /tmp/archiso-tmp
+	docker exec -it arch rm -rf $(WORKDIR)
 
 .PHONY: run
 
 run:
-	run_archiso -i /usr/live/out/archlinux-$(date +%Y.%m.%d)-x86_64.iso
+	docker exec -it arch run_archiso -i ${OUT}/archlinux-$(date +%Y.%m.%d)-x86_64.iso
