@@ -43,7 +43,9 @@ function parse_list() {
   echo "${TARGET[@]}"
 }
 
-# K E Y M A P
+function set_common_settings() {
+  timedatectl set-ntp true
+}
 
 function set_keymap() {
   declare -a KEYMAPS=(`localectl list-keymaps`)
@@ -57,10 +59,6 @@ function set_keymap() {
   echo ${KEYMAPS[$(( KEYMAP - 1 ))]}
 }
 
-loadkeys $(set_keymap)
-
-# L O C A L E
-
 function set_locale() {
   declare -a LOCALES=(`tail --lines=+24 /etc/locale.gen | sed -e 's/#//g' | awk '{print $1}'`)
   declare -a OPTIONS=(`parse_list ${LOCALES[@]}`)
@@ -73,5 +71,18 @@ function set_locale() {
   echo ${LOCALES[$(( LOCALE - 1 ))]}
 }
 
-localectl set-locale $(set_locale)
+function main() {
+  # COMMON SETTINGS
+  set_common_settings
 
+  # KEYMAP
+  loadkeys $(set_keymap)
+
+  # LOCALE
+  sed -i "/#$(set_locale)/s/^#//g" /etc/locale.gen
+  locale-gen
+
+  echo "DONE!!"
+}
+
+main
