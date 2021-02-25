@@ -1,4 +1,4 @@
-#!make
+#! /bin/bash
 
 # Copyright (c) 2021 Romullo @hiukky.
 
@@ -18,28 +18,21 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-WORKDIR=/tmp/archiso-tmp
-SRC=/arch
-OUT=$(SRC)/out
-VERSION=$(LOGPATH)$(shell date +%Y.%m.%d)
+pacman -Syyu --noconfirm
+pacman -S archiso virt-manager qemu vde2 ebtables dnsmasq bridge-utils openbsd-netcat --noconfirm
 
+systemctl enable libvirtd.service
+systemctl start libvirtd.service
 
-.PHONY: install
+sed -i 's/#unix_sock_group/unix_sock_group/g' /etc/libvirt/libvirtd.conf
+sed -i 's/#unix_sock_rw_perms/unix_sock_rw_perms/g' /etc/libvirt/libvirtd.conf
 
-install:
-	docker exec -it arch $(SRC)/bootstrap.sh
+usermod -a -G libvirt $(whoami)
+newgrp libvirt
 
-.PHONY: build
+systemctl restart libvirtd.service
 
-build:
-	docker exec -it arch mkarchiso -v -w $(WORKDIR) -o $(OUT) $(SRC)
+modprobe -r kvm_intel
+modprobe kvm_intel nested=1
 
-.PHONY: clean
-
-clean:
-	docker exec -it arch rm -rf $(WORKDIR)
-
-.PHONY: run
-
-run:
-	docker exec -it arch run_archiso -i $(OUT)/archlinux-$(VERSION)-x86_64.iso
+echo "options kvm-intel nested=1" | sudo tee /etc/modprobe.d/kvm-intel.conf
