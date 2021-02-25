@@ -27,20 +27,27 @@ textbox=white,#0d1117
 button=#0d1117,#eab464
 '
 
-# K E Y M A P
-
-setKeymap() {
-  declare -a KEYMAPS=(`localectl list-keymaps`)
-  declare -a OPTIONS
+function parse_list() {
+  declare -a SOURCE=("$@")
+  declare -a TARGET
 
   local idx=0
 
-  for option in "${KEYMAPS[@]}"
+  for option in "${SOURCE[@]}"
   do
-  position=$(( idx + 1 ))
-  OPTIONS[$idx]="$position $option"
-  idx=$position
+    position=$(( idx + 1 ))
+    TARGET[$idx]="$position $option"
+    idx=$position
   done
+
+  echo "${TARGET[@]}"
+}
+
+# K E Y M A P
+
+function set_keymap() {
+  declare -a KEYMAPS=(`localectl list-keymaps`)
+  declare -a OPTIONS=(`parse_list ${KEYMAPS[@]}`)
 
   KEYMAP=$(whiptail --title "Keyboard" \
           --separate-output \
@@ -50,4 +57,21 @@ setKeymap() {
   echo ${KEYMAPS[$(( KEYMAP - 1 ))]}
 }
 
-loadkeys $(setKeymap)
+loadkeys $(set_keymap)
+
+# L O C A L E
+
+function set_locale() {
+  declare -a LOCALES=(`tail --lines=+24 /etc/locale.gen | sed -e 's/#//g' | awk '{print $1}'`)
+  declare -a OPTIONS=(`parse_list ${LOCALES[@]}`)
+
+  LOCALE=$(whiptail --title "Locale" \
+          --separate-output \
+          --menu "Select a standard:" 25 53 15 ${OPTIONS[@]} \
+          3>&1 1>&2 2>&3)
+
+  echo ${LOCALES[$(( LOCALE - 1 ))]}
+}
+
+localectl set-locale $(set_locale)
+
