@@ -21,7 +21,7 @@
 WORKDIR=/tmp/archiso-tmp
 SRC=$(PWD)
 OUT=$(SRC)/out
-VERSION=$(LOGPATH)$(shell date +%Y.%m.%d)
+VERSION=$(shell date +%Y.%m.%d)
 
 
 .PHONY: install

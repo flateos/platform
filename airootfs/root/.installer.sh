@@ -56,7 +56,7 @@ function set_keymap() {
           --menu "Select a standard:" 25 53 15 ${OPTIONS[@]} \
           3>&1 1>&2 2>&3)
 
-  echo ${KEYMAPS[$(( KEYMAP - 1 ))]}
+  loadkeys ${KEYMAPS[$(( KEYMAP - 1 ))]}
 }
 
 function set_locale() {
@@ -68,19 +68,25 @@ function set_locale() {
           --menu "Select a standard:" 25 53 15 ${OPTIONS[@]} \
           3>&1 1>&2 2>&3)
 
-  echo ${LOCALES[$(( LOCALE - 1 ))]}
+  sed -i "/#${LOCALES[$(( LOCALE - 1 ))]}/s/^#//g" /etc/locale.gen
+  locale-gen
+}
+
+set_host() {
+    local HOST=$(whiptail --title "Hostname" \
+                --inputbox "Enter your username:" 10 30 \
+                3>&1 1>&2 2>&3)
+
+    echo $HOST > /etc/hostname
 }
 
 function main() {
-  # COMMON SETTINGS
+  clear
+
   set_common_settings
-
-  # KEYMAP
-  loadkeys $(set_keymap)
-
-  # LOCALE
-  sed -i "/#$(set_locale)/s/^#//g" /etc/locale.gen
-  locale-gen
+  set_keymap
+  set_locale
+  set_host
 
   echo "DONE!!"
 }
