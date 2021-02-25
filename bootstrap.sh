@@ -28,11 +28,15 @@ sed -i 's/#unix_sock_group/unix_sock_group/g' /etc/libvirt/libvirtd.conf
 sed -i 's/#unix_sock_rw_perms/unix_sock_rw_perms/g' /etc/libvirt/libvirtd.conf
 
 usermod -a -G libvirt $(whoami)
-newgrp libvirt
 
-systemctl restart libvirtd.service
+newgrp libvirt << EONG
+    systemctl restart libvirtd.service
 
-modprobe -r kvm_intel
-modprobe kvm_intel nested=1
+    modprobe -r kvm_intel
+    modprobe kvm_intel nested=1
 
-echo "options kvm-intel nested=1" | sudo tee /etc/modprobe.d/kvm-intel.conf
+    echo "options kvm-intel nested=1" | tee /etc/modprobe.d/kvm-intel.conf
+
+    echo "Done!"
+EONG
+
