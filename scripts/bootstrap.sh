@@ -2,8 +2,8 @@
 
 # Copyright (c) 2021 Romullo @hiukky.
 
-# This file is part of Arch
-# (see https://github.com/hiukky/arch).
+# This file is part of UnaveOS
+# (see https://github.com/unave).
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
