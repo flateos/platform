@@ -42,4 +42,4 @@ clean:
 .PHONY: run
 
 run:
-	run_archiso -i $(OUT)/archlinux-$(VERSION)-x86_64.iso
+	run_archiso -i $(OUT)/unave-$(VERSION)-x86_64.iso
