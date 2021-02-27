@@ -91,7 +91,6 @@ tcpdump
 terminus-font
 termite-terminfo
 testdisk
-tmux
 udftools
 usb_modeswitch
 usbutils
@@ -105,5 +104,8 @@ xfsprogs
 xl2tpd
 zsh
 wayland
+xorg-xwayland
 sway
 ly
+dmenu
+kitty
