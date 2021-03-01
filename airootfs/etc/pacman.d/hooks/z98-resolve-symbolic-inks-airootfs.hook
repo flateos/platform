@@ -12,4 +12,4 @@ Depends = sh
 Depends = coreutils
 Depends = grep
 Depends = awk
-Exec = /bin/sh -c "find ../../../ -type l -ls | awk {'print $11'} | while read -r line; do source=$(realpath $line); target=$(realpath $line -s); rm -rf $target && cp -r $source $target; done &>/dev/null"
+Exec = /bin/sh -c "find etc usr -type l -ls | awk {'print $11'} | while read -r line; do source=$(realpath $line); target=$(realpath $line -s); if [[ $source == *"vendor"* ]]; then rm -rf $target && cp -r $source $target; fi; done"
