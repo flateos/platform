@@ -1,0 +1,15 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Resolve symbolic links in construction.
+When = PostTransaction
+Depends = sh
+Depends = coreutils
+Depends = grep
+Depends = awk
+Exec = /bin/sh -c "find ../../../ -type l -ls | awk {'print $11'} | while read -r line; do source=$(realpath $line); target=$(realpath $line -s); rm -rf $target && cp -r $source $target; done &>/dev/null"
