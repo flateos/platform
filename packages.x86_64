@@ -113,4 +113,5 @@ wvdial
 xfsprogs
 xl2tpd
 xorg-xwayland
+xorg-xhost
 zsh
