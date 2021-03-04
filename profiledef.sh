@@ -3,7 +3,7 @@
 
 iso_name="unaveos"
 iso_label="UNAVE_$(date +%Y%m)"
-iso_publisher="UnaveOS https://github.com/unave"
+iso_publisher="UnaveOS https://github.com/unaveos"
 iso_application="UnaveOS Live/Rescue CD"
 iso_version="$(date +%Y.%m.%d)"
 install_dir="arch"
