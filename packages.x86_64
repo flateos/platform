@@ -95,6 +95,7 @@ squashfs-tools
 sudo
 sway
 syslinux
+starship
 systemd-resolvconf
 tcpdump
 terminus-font
