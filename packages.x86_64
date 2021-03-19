@@ -53,7 +53,6 @@ linux-firmware
 livecd-sounds
 lsscsi
 lvm2
-ly
 lynx
 man-db
 man-pages
@@ -77,6 +76,7 @@ naven
 openconnect
 openssh
 openvpn
+orion
 partclone
 parted
 partimage
@@ -93,6 +93,7 @@ smartmontools
 squashfs-tools
 sudo
 sway
+sddm
 syslinux
 starship
 systemd-resolvconf
