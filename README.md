@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="350" alt="platform logo" src="brand.svg"/>
+  <img alt="platform logo" src="brand.svg"/>
 </div>
 
 <h3 align="center"> Construction platform based on Archlinux. </h3>
