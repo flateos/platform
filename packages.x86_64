@@ -19,7 +19,6 @@ ddrescue
 dhclient
 dhcpcd
 diffutils
-dmenu
 dmraid
 dnsmasq
 dosfstools
@@ -87,6 +86,7 @@ reflector
 reiserfsprogs
 rp-pppoe
 rsync
+rofi
 rxvt-unicode-terminfo
 sdparm
 sg3_utils
