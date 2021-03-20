@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="unaveos"
+iso_name="flateos"
 iso_label="UNAVE_$(date +%Y%m)"
-iso_publisher="UnaveOS https://github.com/unaveos"
-iso_application="UnaveOS Live/Rescue CD"
+iso_publisher="FlateOS https://github.com/flateos"
+iso_application="FlateOS Live/Rescue CD"
 iso_version="$(date +%Y.%m.%d)"
 install_dir="arch"
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 'uefi-x64.systemd-boot.esp' 'uefi-x64.systemd-boot.eltorito')
