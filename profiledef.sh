@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 iso_name="flateos"
-iso_label="FLATEOS_$(date +%Y%m)"
+iso_label="FLATE_$(date +%Y%m)"
 iso_publisher="FlateOS https://github.com/flateos"
 iso_application="FlateOS Live/Rescue CD"
 iso_version="$(date +%Y.%m.%d)"
@@ -17,6 +17,5 @@ file_permissions=(
   ["/root"]="0:0:750"
   ["/root/.automated_script.sh"]="0:0:755"
   ["/usr/local/bin/choose-mirror"]="0:0:755"
-  ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
 )
