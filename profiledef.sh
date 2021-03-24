@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 iso_name="flateos"
-iso_label="FLATE_$(date +%Y%m)"
+iso_label="FlateOS_$(date +%Y.%-m)"
 iso_publisher="FlateOS https://github.com/flateos"
 iso_application="FlateOS Live/Rescue CD"
 iso_version="$(date +%Y.%m.%d)"
