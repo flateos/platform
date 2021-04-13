@@ -6,6 +6,7 @@ amd-ucode
 arch-install-scripts
 b43-fwcutter
 base
+base-devel
 bind-tools
 brltty
 broadcom-wl
@@ -30,6 +31,7 @@ exfatprogs
 f2fs-tools
 fatresize
 fsarchiver
+fuse
 gnu-netcat
 gpart
 gpm
@@ -85,7 +87,7 @@ ppp
 pptpclient
 qt5-quickcontrols2
 qt5-svg
-qutebrowser
+chromium
 reflector
 reiserfsprogs
 rp-pppoe
@@ -107,6 +109,9 @@ terminus-font
 termite-terminfo
 testdisk
 ttf-nerd-fonts-symbols
+ttf-freefont
+ttf-arphic-uming
+ttf-baekmuk
 udftools
 usb_modeswitch
 usbutils
