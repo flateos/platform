@@ -6,6 +6,7 @@ iso_label="FlateOS_$(date +%Y.%-m)"
 iso_publisher="FlateOS https://github.com/flateos"
 iso_application="FlateOS Live/Rescue CD"
 iso_version="$(date +%Y.%m.%d)"
+buildmodes=('iso')
 install_dir="arch"
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 'uefi-x64.systemd-boot.esp' 'uefi-x64.systemd-boot.eltorito')
 arch="x86_64"
