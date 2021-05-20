@@ -123,7 +123,6 @@ usb_modeswitch
 usbutils
 vim
 vpnc
-waybar
 wayland
 wireless-regdb
 wireless_tools
