@@ -35,6 +35,7 @@ fsarchiver
 fuse
 flate-environ
 flate-calamares
+flate-fctl
 flate-sddm
 flate-omz
 gnu-netcat
