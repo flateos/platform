@@ -1,0 +1,5 @@
+ID=flate
+BUILD_ID=rolling
+NAME="FlateOS"
+PRETTY_NAME="FlateOS"
+LOGO=flateos
